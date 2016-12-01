@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portus System</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+ {{template "../tpl/p_index_css.tpl"}}
+
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+     {{if .IsAdmin}}
+        <div id="logo"> <a href="/index"><img alt="" src="/static/img/logo_index.gif"></a> </div>
+        <div id="title">Portus System</div>
+
+    <div id="user_info">
+            <div id="welcome">管理员<br/>
+            </div>
+    {{else}}
+     <div id="logo"> <a href="/index"><img alt="" src="/static/img/logo_index.gif"></a> </div>
+        <div id="title">Portus System</div>
+        <div id="user_info">
+            <div id="welcome">用户 <br/>
+          
+            </div>
+    {{end}}
+
+ <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{$uname := .username}}{{$uname}}</a>
+              <ul class="dropdown-menu">
+                {{if .IsAdmin}}
+     <li><a href="/userinfo?username={{$uname}}"   target="MainFrame" ><span class="glyphicon glyphicon-calendar"></span>个人信息</a></li>
+      <li><a href="/info"  target="MainFrame"><span class="glyphicon glyphicon-lock"></span>管理用户信息</a></li>
+      <li class="divider"></li>
+      <li><a href="/login?exit={{$uname}}"><span class="glyphicon glyphicon-log-in"></span>退出</a></li>
+      {{else}}
+      <li><a href="/userinfo?username={{$uname}}" target="MainFrame"><span class="glyphicon glyphicon-calendar"></span>个人信息</a></li>
+      <li class="divider"></li>
+      <li><a href="/login?exit={{$uname}}"><span class="glyphicon glyphicon-log-in"></span>退出</a></li>
+      {{end}}
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+
+        <!--  </div> -->
+        </div>
+    </div>
+
+    <div id="navigator">
+        <iframe  src="usertree"> </iframe> 
+        </div>
+
+    <div id="main">
+       <iframe name="MainFrame" src="/main" id="myiframe" ></iframe>  
+    </div>
+
+ {{template "../tpl/T.footer.tpl"}}
+
+</div>
+</body>
+
+ {{template "../tpl/p_index_js.tpl"}} 
+ 
+<script type="text/javascript">
+    var sock = null;
+  var wsuri = "ws://127.0.0.1:8360/ws";
+  $(document).ready(function(){
+    $.post("/ws",{
+      url:wsuri,
+    },
+    function(data,status){
+      //alert("数据: \n" + data  +"\n状态: " + status); 
+      wsuri = data; 
+      //alert(wsuri)  
+    });
+    });
+
+    window.onload = function() {  
+        console.log("onload");
+        sock = new WebSocket(wsuri);
+        sock.onopen = function() {
+            console.log("connected to " + wsuri);
+        }
+        sock.onclose = function(e) {
+            console.log("connection closed (" + e.code + ")");
+        }
+        sock.onmessage = function(e) {
+            console.log("message received: " + e.data);
+      alert(e.data)
+        }
+    };
+
+    function send() {
+        var msg = document.getElementById('message').value;
+        sock.send(msg);
+    }
+
+</script>
+
+
+ <!--鼠标悬停下拉列表 -->
+ <script>
+      //$('[data-toggle="dropdown"]').bootstrapDropdownHover();
+      $.fn.bootstrapDropdownHover();
+      //$('#dropdownMenu1').bootstrapDropdownHover();
+      //$('.navbar [data-toggle="dropdown"]').bootstrapDropdownHover();
+    </script>
+
+    <script>
+      // demo for realtime configuration and destroy
+      $(function(){
+        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+
+      $('#setSticky').on('click', function () {
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('setClickBehavior', 'sticky');
+      });
+
+      $('#setDefault').on('click', function () {
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('setClickBehavior', 'default');
+      });
+
+      $('#setDisable').on('click', function () {
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('setClickBehavior', 'disable');
+      });
+
+      $('#set1000').on('click', function () {
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('setHideTimeout', 1000);
+      });
+
+      $('#set200').on('click', function () {
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('setHideTimeout', 200);
+      });
+
+      $('#destroy').on('click', function () {
+        $('[data-toggle="tooltip"]').tooltip('hide');
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover('destroy');
+        $('#destroy, #set200, #set1000, #setDisable, #setDefault, #setSticky').prop('disabled', 'disabled');
+        $('#reinitialize').prop('disabled', false);
+        $('.setdemo').addClass('destroyed');
+      });
+
+      $('#reinitialize').on('click', function () {
+        $('[data-toggle="tooltip"]').tooltip('hide');
+        $('.setdemo [data-toggle="dropdown"]').bootstrapDropdownHover();
+        $('#destroy, #set200, #set1000, #setDisable, #setDefault, #setSticky').prop('disabled', false);
+        $(this).prop('disabled', 'disabled');
+        $('.setdemo').removeClass('destroyed');
+      });
+      });
+      
+    </script>
+    <!-- 结束鼠标悬停-->

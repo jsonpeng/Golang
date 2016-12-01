@@ -1,0 +1,44 @@
+{
+	"REGISTER":"注册",
+	"ENTERPWD":"输入密码",
+	"CONFIRMPWD":"确认密码",
+	"PWD6":"密码长度不小于6位数",
+	"PWD16":"密码长度不超过16位数",
+	"PWDCON":"两次密码输入不一致",
+	"ISADMIN":"用户名默认为admin, 我同意 ",
+	"TERM":"条款",
+	"AND":"和",
+	"PROVISIONS":"规定",
+	"PWDJ":"请先检查密码的输入",
+	"CHECKC":"校检正确",
+	
+	
+	"LOGIN":"登录",
+	"USERNAME":"用户名",
+	"PWD":"密码",
+	"KEEP":"记住我",
+	"FORGETPWD":"忘记密码",
+	"ENTER":"点击进入",
+	"TORESET":"重置你的密码.",
+	"USERNAMECHECK":"请检查用户名的输入",
+	"PWDCHECK":"请检查密码的输入",
+	"USERLESS":"用户名不得少于5位",
+	"USERGESHI":"用户名格式不正确",
+	
+	"DACCOUT":"还没有账号",
+	"CACCOUT":"创建一个管理员账号",
+		
+	"UNAMETOPWD":"输入你的用户名和网关ID来找回密码",
+	"ENTERUNAEM":"请输入用户名",
+	"ENTERGWID":"请输入网关ID",
+	"MISGWID":"GWID不合法",
+	"UNAMENOT":"用户名不合法",
+	"BACK":"返回上一级",
+	"FIND":"找回",
+	
+	
+	"INFO":"个人信息",
+	"MANAGEINFO":"管理用户信息",
+	"EXIT":"安全退出",
+	"HOMEPAGE":"主页"
+}

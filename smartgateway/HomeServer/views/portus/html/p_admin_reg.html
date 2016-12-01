@@ -1,0 +1,58 @@
+{{template "../tpl/T.link.tpl"}}
+{{template "../tpl/T.js.tpl"}}
+<title>输入管理员密码</title>
+{{template "../tpl/T.css.tpl"}}
+</head>
+     {{template "../tpl/T.header.tpl"}}
+    <div id="main">
+        <div id="mainBg">
+            <div id="mainPanel">
+
+                <div id="">
+                <form method='post' action='#' onSubmit= "return check()">
+                   <div id="welcome">
+                        <span id="welcome-text">注册</span>
+                    </div>
+            <dl>
+            <dd class='user_dd'>
+               <span class="item"> 密码: </span><input type='password' name='pass' vlaue=''/>
+                <span class ='info pass_put'>请输入6-18位密码，由数字字母下划线组成（不能出现空格）。<p></p></span>
+                <span class='safe'>安全等级：<strong class='s s1'></strong> <strong class='s s2'></strong>
+                    <strong class='s s3'></strong> <strong class='word'></strong><p></p>
+                </span>
+                <span class='info_error pass_error'>请输入正确密码!<p></p></span>
+                <span class='ok pass_ok'></span>
+            </dd>
+            <dd>
+               <span class="item"> 确认: </span><input type='password' name='confirm_pass' />
+                <span class='info confirm_put'>请再次输入密码。<p></p></span>
+                <span class='info_error confirm_error'>两次密码不一致！<p></p></span>
+                <span class='ok confirm_ok'></span>
+            </dd>
+                <!--   <div id="user-password">
+                   {{template "test"}}
+                  </div>  -->
+                   
+                    <div >
+                        <input type="submit" class="btn" id="doReload" value="注册"/>
+                       
+                    </div>
+                  <!--   <div>
+                      <s:fielderror/> 显示表单验证的出错信息
+                    </div> -->
+                    <!-- end of form -->
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script language="javascript">
+
+</script>
+<!-- {{define "test"}}
+<div>
+    this is test
+</div>
+{{end}} -->

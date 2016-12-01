@@ -1,0 +1,24 @@
+{{template "../tpl/T.link.tpl"}}
+{{template "../tpl/T.js.tpl"}}
+<title>找回密码</title>
+{{template "../tpl/T.css.tpl"}}
+</head>
+<body>
+  {{template "../tpl/T.header.tpl"}}
+<div id="main">
+        <div id="mainBg">
+            <div id="mainPanel">
+                  <div id="right">
+<form method='post' action="/forgetpwd">
+			<dd class='user_dd'>
+				请输入用户名 : <input type='text' name='username' value=''/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn" type="submit" value="找回">
+			</dd>
+<div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+  {{template "../tpl/T.footer.tpl"}}

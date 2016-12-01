@@ -1,0 +1,27 @@
+
+  {{template "../tpl/p_mobile_link.tpl" .}}
+  <div class="logo">
+    <img src="/static/img/logo.jpg" alt="" /> 
+ </div>
+
+   <!-- BEGIN LOGIN -->
+  <div class="content">
+    <div class="[[ pageClass ]]"ng-view></div>
+  
+  <!-- END LOGIN -->
+  {{if .IsReg}}
+  {{else}}
+    <!-- END REGISTRATION FORM -->
+    <div class="create-account">
+<p>
+[["DACCOUT"|translate]]? 
+<a id="register-btn" class="" href="#reg">[["CACCOUT"|translate]]</a>
+</p>
+</div>
+    {{end}}
+    </div>
+{{template "../tpl/p_mobile_footer.tpl"}}
+
+
+
+<!--END aj.js-->

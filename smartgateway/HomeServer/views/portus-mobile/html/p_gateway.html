@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  {{template "../tpl/p_gateway_css.tpl"}}
+
+    <link rel="stylesheet" href="/static/bootstrap-web/css/bootstrap.min.css">
+    <!--开始滑动匡布局-->
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <!--布局结束-->
+    <script src="/static/bootstrap-web/js/bootstrap.min.js"></script>
+    <script src="/static/bootstrap-web/js/bootstrap.js"></script>
+
+
+<style>
+/*.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+ 
+.video-container iframe, 
+.video-container object, 
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;*/
+    .video-container{
+position:relative;
+height:0;
+padding-top:20px;
+padding-bottom:93%;
+overflow:hidden;
+}
+.video-container embed, .video-container iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+.iframe-container{
+padding-bottom:56%;
+}
+}
+</style>
+
+<body>
+
+
+
+
+<div id="navi">
+ <div id='naviDiv'>
+        <span><img src="/static/img/gateway/arror.png" width="7" height="11" border="0" alt=""></span>&nbsp;网关节点操作<span>
+    </div>
+    <!-- 导航空白 -->
+</div>
+
+<div id="tips">
+    <!-- 导航空白 -->
+</div>
+<div id="mainContainer">
+ 
+
+  <div id="wrapper1">
+    
+        <div id="slider">    
+            <img class="scrollButtons left" src="/static/img/leftarrow.png">
+            <div style="overflow: hidden;" class="scroll">
+                <div class="scrollContainer">
+			
+				{{$gwid := .Gwid}}
+				{{ range .Node}}   
+                 {{with .}}
+				 <div class="panel" id="panel_{{.Id}}">
+                        <div class="inside">
+                            <img src="/static/img/gateway/{{.Category}}.gif" alt="picture" />
+                            <h2>{{.Nodename}}</h2>
+                         
+							<p><a target="gwedit" href="/gwedit?Gwid={{$gwid}}&Nid={{.Id}}"> {{.Address}} </a></p> 
+                           <!--  <p><a href="/user/?{{.Address}}?{{.Category}}"></a></p> -->
+                        </div>
+					
+                    </div>
+						 {{end}}
+	            {{end}}
+                </div>
+                <div id="left-shadow"></div>
+                <div id="right-shadow"></div>
+				
+
+            </div>
+ 
+            <img class="scrollButtons right" src="/static/img/rightarrow.png">
+
+              
+
+
+        </div>
+        
+    </div>
+
+
+<HR>
+
+  <div class="video-container">
+    <iframe src="/gwedit" id="gwedit" name="gwedit" width="800" height="450" frameborder="0"></iframe>
+                       </div>
+<!-- <iframe src="/gwedit" id="gwedit" name="gwedit" ></iframe> -->
+
+
+
+</body>
+</html>

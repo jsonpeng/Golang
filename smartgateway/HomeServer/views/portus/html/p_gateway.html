@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  {{template "../tpl/p_gateway_css.tpl"}}
+
+    <link rel="stylesheet" href="/static/bootstrap-web/css/bootstrap.min.css">
+    <!--开始滑动匡布局-->
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <!--布局结束-->
+    <script src="/static/bootstrap-web/js/bootstrap.min.js"></script>
+       <script src="/static/bootstrap-web/js/bootstrap.js"></script>
+
+
+<body>
+
+
+
+
+<div id="navi">
+ <div id='naviDiv'>
+        <span><img src="/static/img/gateway/arror.png" width="7" height="11" border="0" alt=""></span>&nbsp;网关节点操作<span>
+    </div>
+    <!-- 导航空白 -->
+</div>
+
+<div id="tips">
+    <!-- 导航空白 -->
+</div>
+<div id="mainContainer">
+ 
+
+  <div id="wrapper1">
+    
+        <div id="slider">    
+            <img class="scrollButtons left" src="/static/img/leftarrow.png">
+            <div style="overflow: hidden;" class="scroll">
+                <div class="scrollContainer">
+			
+				{{$gwid := .Gwid}}
+				{{ range .Node}}   
+                 {{with .}}
+				 <div class="panel" id="panel_{{.Id}}">
+                        <div class="inside">
+                            <img src="/static/img/gateway/{{.Category}}.gif" alt="picture" />
+                            <h2>{{.Nodename}}</h2>
+                         
+							<p><a target="gwedit" href="/gwedit?Gwid={{$gwid}}&Nid={{.Id}}"> {{.Address}} </a></p> 
+                           <!--  <p><a href="/user/?{{.Address}}?{{.Category}}"></a></p> -->
+                        </div>
+					
+                    </div>
+						 {{end}}
+	            {{end}}
+                </div>
+                <div id="left-shadow"></div>
+                <div id="right-shadow"></div>
+				
+
+            </div>
+ 
+            <img class="scrollButtons right" src="/static/img/rightarrow.png">
+
+              
+
+
+        </div>
+        
+    </div>
+
+
+<HR>
+
+<iframe src="/gwedit" id="gwedit" name="gwedit" width="1684" height="400"></iframe>
+
+
+
+</body>
+</html>

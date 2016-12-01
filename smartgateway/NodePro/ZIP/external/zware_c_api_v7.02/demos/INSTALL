@@ -1,0 +1,59 @@
+=================================
+To generate sample application executable
+=================================
+For Linux, run the command:
+make
+
+For Linux with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=LINUX_ZIP2
+
+--------------------------
+For BeagleBone Black platform, run the command:
+make TARGET_PLATFORM=BEAGLEBONE
+
+For BeagleBone Black platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=BEAGLEBONE_ZIP2
+
+--------------------------
+For OPENWRT AR7XX platform [EXPERIMENTAL, UNSUPPORTED], run the command:
+make TARGET_PLATFORM=OPENWRT
+
+For OPENWRT AR7XX platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=OPENWRT_ZIP2
+
+--------------------------
+For MAC OS X platform [EXPERIMENTAL, UNSUPPORTED], run the command:
+make TARGET_PLATFORM=OSX
+
+For MAC OS X platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=OSX_ZIP2
+
+--------------------------
+For Sigma SMP86XX Tangox platform [EXPERIMENTAL, UNSUPPORTED], run the command:
+make TARGET_PLATFORM=SIGMA
+
+For Sigma SMP86XX Tangox platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=SIGMA_ZIP2
+
+--------------------------
+For SMP8756 Vantage platform [EXPERIMENTAL, UNSUPPORTED], run the command:
+make TARGET_PLATFORM=VANTAGE
+
+For SMP8756 Vantage platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=VANTAGE_ZIP2
+
+--------------------------
+For Android platform [EXPERIMENTAL, UNSUPPORTED], run the command:
+make TARGET_PLATFORM=ANDROID
+
+For Android platform with Z/IP version 2, run the commands:
+make TARGET_PLATFORM=ANDROID_ZIP2
+
+
+========================================================
+To enable debug information, add "DEBUG=1" at build time
+========================================================
+Example:
+make DEBUG=1
+make TARGET_PLATFORM=LINUX_ZIP2 DEBUG=1
+

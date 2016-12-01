@@ -1,0 +1,72 @@
+  <!-- BEGIN LOGIN FORM -->
+    <form class="form-vertical login-form" name="registerForm" action="" method="post" ng-controller="login" >
+      <h3 class="form-title">[["LOGIN"|translate]]</h3>  
+      <div class="control-group" >
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <div class="controls" >
+          <div class="input-icon left"  >
+            <i class="icon-user"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" placeholder='[["USERNAME"|translate]]' name="username" ng-minlength="5" ng-maxlength="16" ng-model="formData.username" required/>
+     </div>
+
+
+     <div  ng-show="registerForm.username.$error.minlength" >
+     <label style="color: red" class="help-inline help-small no-left-padding" for="password">*[["USERLESS"|translate]]</label>
+     </div>
+     <div ng-show="registerForm.username.$error.maxlength">
+<label style="color: red" class="help-inline help-small no-left-padding" for="password">*[["USERGESHI"|translate]]</label>
+</div>
+          </div>
+        </div>
+
+
+
+      
+       
+      <div class="control-group">
+       
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-lock"></i>
+            <input class="m-wrap placeholder-no-fix" type="password" placeholder='[["PWD"|translate]]' name="password" ng-minlength="6" ng-maxlength="16" ng-model="formData.password" required/>
+          </div>
+
+               <div  ng-show="registerForm.password.$error.minlength" >
+     <label style="color: red" class="help-inline help-small no-left-padding" for="password">*[["PWD6"|translate]]</label>
+     </div>
+     <div ng-show="registerForm.password.$error.maxlength">
+<label style="color: red" class="help-inline help-small no-left-padding" for="password">*[["PWD16"|translate]]</label>
+</div>
+         
+
+        </div>
+      </div>
+  
+ <div ng-show="!registerForm.username.$invalid && !registerForm.password.$invalid">
+           <div class="alert  hide" style="display: block;">
+<button class="close" data-dismiss="alert"></button>
+<span class="icon-ok">[["CHECKC"|translate]]</span>
+</div>
+      </div>
+      <div class="form-actions">
+        <label class="checkbox">
+        <input type="checkbox" name="autologin" value="1"/>[["KEEP"|translate]]
+        </label>
+        <input type="button" class="btn green pull-right" value='[["LOGIN"|translate]]' ng-controller="login" ng-disabled="registerForm.username.$invalid ||registerForm.password.$invalid " ng-click="asave()"/>
+    </form>
+ 
+      
+    <div hidden>
+       [[formData]]
+     </div>
+   
+      <div class="forget-password">
+        <h4>[["FORGETPWD"|translate]] ?</h4>
+        <p>
+          <a href="#forget" class="" id="forget-password" ">[["ENTER"|translate]]</a>
+          [["TORESET"|translate]].
+        </p>
+      </div>
+   
+    <!-- END LOGIN FORM -->  
+	

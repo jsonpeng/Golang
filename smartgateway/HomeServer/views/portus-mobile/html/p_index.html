@@ -1,0 +1,39 @@
+{{template "../tpl/p_mobile_link.tpl" .}}
+<body class="fixed-top" ng-app="portushome" ng-controller="TranslateController">
+	<!-- BEGIN HEADER -->
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<!-- BEGIN LOGO -->
+				<a class="brand" href="">
+				<img src="/static/img/logo.png" alt="logo" />
+				</a>
+				<!-- END LOGO -->
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+				<img src="/static/assets/img/menu-toggler.png" alt="" />
+				</a>          
+		
+				{{template "../tpl2/T.user_index_info.tpl" .}}
+			
+				<!-- END TOP NAVIGATION MENU -->	
+	{{template "../tpl2/T.user_index_container.tpl" .}}
+	
+				
+				
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+		<!-- END SIDEBAR -->
+
+		{{template "../tpl2/T.user_index_page.tpl" .}}
+		
+		
+				
+				 
+	    {{template "../tpl2/T.user_index_nav.tpl" .}} 
+
+
+		<!-- END CONTAINER -->
+	   {{template "../tpl2/T.user_index_footer.tpl" .}}

@@ -1,0 +1,44 @@
+{
+	"REGISTER":"REGISTER",
+	"ENTERPWD":"Enter Password",
+	"CONFIRMPWD":"Confirm Password",
+	"PWD6":"Password length is not less than 6 digits",
+	"PWD16":"Password length is less than 16 digits",
+	"PWDCON":"Two password input",
+	"ISADMIN":"The default for the admin user name, I agree with you",
+	"TERM":"The terms of",
+	"AND":"and",
+	"PROVISIONS":"provisions",
+	"PWDJ":"Please check the password input",
+	"CHECKC":"Check the correct",
+	
+	
+	"LOGIN":"LOGIN",
+	"USERNAME":"Username",
+	"PWD":"Password",
+	"KEEP":"Keep in mind",
+	"FORGETPWD":"Forget password",
+	"ENTER":"Click to enter",
+	"TORESET":"To reset your password.",
+	"USERNAMECHECK":"Please check the username input",
+	"PWDCHECK":"Please check the password input",
+	"USERLESS":"The username shall not be less than 5",
+	"USERGESHI":"The username format error",
+	
+	"DACCOUT":"Still no account",
+	"CACCOUT":"Create an account",
+	
+	"UNAMETOPWD":"Enter the username to retrieve password",
+	"ENTERUNAEM":"Enter your username",
+	"ENTERGWID":"Enter your gateway ID",
+	"MISGWID":"GWID illegal",
+	"UNAMENOT":"Username is not legal",
+	"BACK":"Back",
+	"FIND":"Find",
+	
+	
+	"INFO":"Personal information",
+	"MANAGEINFO":"Management of user information",
+	"EXIT":"Exit",
+	"HOMEPAGE":"Home Page"
+}

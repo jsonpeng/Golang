@@ -1,0 +1,36 @@
+  <!-- BEGIN LOGIN FORM -->
+    <form class="form-vertical login-form" action="" method="post"  ng-controller="getpassword" name="registerForm" novalidate>
+    <h3 class="">忘记密码 ?</h3>
+      <p>您是管理员，请输入您的网关ID来完成找回密码.</p>
+      <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-envelope"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" name="gwid" value="{{.gwid}}" placeholder="输入您的网关ID" ng-model="formData.gwid" ng-minlength="2" ng-maxlength="12" required/>
+             
+          </div>
+        </div>
+      </div>
+       <p>
+                    <span style="color: red" ng-show="registerForm.gwid.$invalid">
+                        <span ng-show="registerForm.gwid.$error.minlength ||registerForm.gwid.$error.maxlength">*GWID不合法</span>
+                        </span>
+                        </p>
+      <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+        
+      
+                 
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+      
+        <i class="m-icon-swapleft"></i> <a href="/#/" >返回上一级</a>
+        
+        <input type="button" class="btn green pull-right" ng-disabled="registerForm.gwid.$invalid"  ng-click="asave()" value="找回" />
+       
+        </button>            
+      </div>
+    </form>

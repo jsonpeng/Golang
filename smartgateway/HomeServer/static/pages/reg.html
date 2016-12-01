@@ -1,0 +1,72 @@
+  <!-- BEGIN LOGIN FORM -->
+  <form name="registerForm" novalidate action="" method="post" ng-controller="registerCtrl" >
+      <h3 class="form-title">[["REGISTER"|translate]]</h3>
+                     <div ng-show="!registerForm.pass.$valid">
+      <div class="alert alert-error hide" style="display: block;">
+<button class="close" data-dismiss="alert"></button>
+<span class="icon-remove">[["PWDJ"|translate]]</span>
+</div>
+      </div>
+     <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-lock"></i>
+               <input type="password"
+                    class="m-wrap placeholder-no-fix" ng-model="formData.pass" ng-minlength="6"
+                    ng-maxlength="16" name="pass" id="pass"
+                    placeholder='[["ENTERPWD"|translate]]' required>
+                    </div>
+                    </div>
+                    </div>
+                <p>
+                    <span style="color: red" ng-show="registerForm.pass.$invalid">
+                        <span ng-show="registerForm.pass.$error.minlength">*[["PWD6"|translate]]</span>
+                        <span ng-show="registerForm.pass.$error.maxlength">*[["PWD16"|translate]]</span>
+                    </span>
+                </p>
+  
+
+            <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-lock"></i>
+             <input type="password"
+                    class="m-wrap placeholder-no-fix" ng-model="formData.confirm_pass" name="confirm_pass"
+                     placeholder='[["CONFIRMPWD"|translate]]' required>
+                    </div>
+                    </div>
+                    </div>
+                <p>
+                    <span style="color: red" ng-show="registerForm.pass.$valid">
+                        <span ng-show="formData.confirm_pass!=formData.pass">*[["PWDCON"|translate]]</span>
+                    </span>
+                </p>
+    <div ng-show="!registerForm.pass.$invalid && formData.pass == formData.confirm_pass">
+           <div class="alert hide" style="display: block;">
+<button class="close" data-dismiss="alert"></button>
+<span class="icon-ok">[["CHECKC"|translate]]</span>
+</div>
+      </div>
+   			  <div class="form-actions">
+      <i class="m-icon-swapleft"></i> 
+        <a href="/#/" >[["BACK"|translate]]</a>      
+      </div>
+     <div class="form-actions">
+          <label class="checkbox">
+          <input type="checkbox" name="tnc"/>[["ISADMIN"|translate]]<a href="#">[["TERM"|translate]]</a> [["AND"|translate]] <a href="#">[["PROVISIONS"|translate]]</a>
+          </label>  
+        
+     
+
+ <input tpye="button"  value='[["REGISTER"|translate]]' class="btn green pull-left"  ng-controller="registerCtrl"
+                ng-disabled="registerForm.pass.$invalid || formData.pass != formData.confirm_pass" ng-click="asave()" />
+                
+	
+    </form>
+   
+    <!--¼àÌýform±íµ¥-->
+    <div hidden>
+    [[formData]]
+    </div >
+    <!--½áÊø¼àÌý-->
+    <!-- END REGISTRATION FORM -->

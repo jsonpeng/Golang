@@ -1,0 +1,294 @@
+{
+  "device_records":
+  [
+      {
+      "_comment": "X company sensors",
+      "vid":1, /* vendor or manufacturer id */
+      "ptype": 4952, /* product type id */
+      "pid":3030, /* product id */
+      "category":1, /* device category as defined in DEV_XXX */
+      "ep": [ /*endpoints */
+                {
+                "epid":0, /* Endpoint id (starting from 0 for virtual endpoint which is node level,
+                                          1 and onwards for real endpoints) */
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 1, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "grp_id": [1, 3, 5] /*group id for the controller to set its node id into the group(s)*/
+                               },
+                               {
+                               "if_type": 2, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "config":[ /*Configuration parameter*/
+                                          {
+                                          "param_num": 1, /* parameter number */
+                                          "param_size":2, /* data size: 1,2,or 4 bytes*/
+                                          "param_val":-10000 /* configuration parameter value (signed integer)*/
+                                          },
+                                          {
+                                          "param_num": 2, /* parameter number */
+                                          "param_size":1, /* data size: 1,2,or 4 bytes*/
+                                          "param_val":15 /* configuration parameter value (signed integer)*/
+                                          }
+                                        ]
+                               }
+                            ]
+                },
+                {
+                "epid":1, /* Endpoint id (starting from 0 for virtual endpoint, 1 and onwards for real endpoints) */
+				"redirect":	[  /* Command redirection*/
+								{
+								"interface": 156, /* Command class ID for redirection*/
+								"command": -1, /* Command class command 0-255 for redirection. -1 means don't care*/
+								"target_ep": 0 /* Target endpoint to redirect the command to */
+								}
+							],		
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 3, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "bin_sensor_type": 3 /*binary sensor type ZW_BSENSOR_TYPE_XXX */
+                               },
+                               {
+                               "if_type": 4, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "sensor_type": 3, /* sensor type ZW_SENSOR_TYPE_XXX */
+                               "sensor_unit": 0 /* supported sensor unit ZW_SENSOR_UNIT_XXX */
+                               }
+                            ]
+                }
+
+            ]
+
+      },
+      {
+      "_comment": "X company meter",
+      "vid":1, /* vendor or manufacturer id */
+      "ptype": 4950, /* product type id */
+      "pid":3030, /* product id */
+      "category":10, /* device category as defined in DEV_XXX */
+      "ep": [ /*endpoints */
+                {
+                "epid":0, /* Endpoint id (starting from 0 for virtual endpoint, 1 and onwards for real endpoints) */
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 1, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "grp_id": [1] /*group id for the controller to set its node id into the group*/
+                               },
+                               {
+                               "if_type": 2, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "config":[ /*Configuration parameter*/
+                                          {
+                                          "param_num": 1, /* parameter number */
+                                          "param_size":2, /* data size: 1,2,or 4 bytes*/
+                                          "param_val":-10000 /* configuration parameter value (signed integer)*/
+                                          }
+                                        ]
+                               },
+                               {
+                               "if_type": 5, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "meter_type": 1, /*meter type ZW_METER_TYPE_XXX */
+                               "meter_supported_units":17 /*supported unit bit-mask : ZW_METER_SUP_UNIT_XXX */
+                               }
+
+                            ]
+                }
+            ]
+
+      },
+      {
+      "_comment": "All alarms manufactured by Y company. pid= -1 means don't care; i.e. it matches anything",
+      "vid":2, /* vendor or manufacturer id */
+      "ptype": 5, /* product type id */
+      "pid":-1, /* product id */
+      "category":1, /* device category as defined in DEV_XXX */
+      "ep": [ /*endpoints */
+                {
+                "epid":0, /* Endpoint id (starting from 0 for virtual endpoint, 1 and onwards for real endpoints) */
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 6, /*interface type as defined in IF_REC_TYPE_XXX */
+                               "user_def_version": 3, /*user-defined interface version which will be reported to user application (optional)*/
+                               "alarm":[ 
+										{
+											"match":[	/*The block that contains the original alarm report data to compare against. Cannot be empty */	
+													    /*All the properties need to met for the conversion to happen. If a property is missing, it will not be included for comparison*/	
+														{
+															"alarm_type": 21, /*Vendor specific alarm level (optional)*/                	
+															"alarm_level": 2  /*Vendor specific alarm level (optional)*/									
+														}
+													],
+											"result":[  /*The block that contains the resultant report. Cannot be empty */
+														/*If a property is missing, it will follow the same value from the original report*/
+														{
+														    "zw_alarm_type": 6, /*Z-wave alarm type mapped from vendor specific proprietary alarm type (optional)*/
+															"alarm_type_name": "Access Control", /*Alarm type name (optional)*/
+															"zw_alarm_event":5, /*Z-wave alarm event mapped from vendor specific alarm level (optional)*/   	
+															"alarm_level_name":"Keypad Lock", /*Alarm level name (optional)*/
+															"zw_alarm_param_type":4, /*Z-wave alarm parameter type as defined in ZW_ALRM_PARAM_XXX (Compulsory when zw_alarm_param is defined in either match/result block)*/
+															"zw_alarm_param":[0,1]  /*Z-wave alarm event parameters in an array (optional)*/
+														}
+													]
+										},
+										{
+											"match":[	/*The block that contains the original alarm report data to compare against. Cannot be empty */	
+													    /*All the properties need to met for the conversion to happen. If a property is missing, it will not be included for comparison*/	
+														{
+															"alarm_type": 9,  /*Vendor specific alarm level (optional)*/                	
+															"alarm_level_range":[10,20]  /*Vendor specific alarm level range, means all values from 10, 20 (both number inclusive) will be used for translation. And they will be translated into the same report. (optional)*/									
+														}
+													],
+											"result":[  /*The block that contains the resultant report. Cannot be empty */
+														/*If a property is missing, it will follow the same value from the original report*/
+														{
+														    "zw_alarm_type": 6, /*Z-wave alarm type mapped from vendor specific proprietary alarm type (optional)*/
+															"alarm_type_name": "Access Control", /*Alarm type name (optional)*/
+															"zw_alarm_event":5, /*Z-wave alarm event mapped from vendor specific alarm level (optional)*/   	
+															"alarm_level_name":"Keypad Lock", /*Alarm level name (optional)*/
+															"zw_alarm_param_type":4, /*Z-wave alarm parameter type as defined in ZW_ALRM_PARAM_XXX (Compulsory when zw_alarm_param is defined in either match/result block)*/
+															"zw_alarm_param":[1]  /*Z-wave alarm event parameters in an array (optional)*/
+														}
+													]
+										},
+										{
+											"match":[	/*The block that contains the original alarm report data to compare against. Cannot be empty */	
+													    /*All the properties need to met for the conversion to happen. If a property is missing, it will not be included for comparison*/	
+														{
+															"alarm_type": 9,  /*Vendor specific alarm level (optional)*/                	
+															"alarm_level": 2  /*Vendor specific alarm level (optional)*/
+															"zw_alarm_type": 6,  /*Z-wave alarm type (optional)*/                	
+															"zw_alarm_event": 5  /*Z-wave alarm event(optional)*/	
+															"zw_alarm_param":[0,1,2] /*Z-wave alarm event parameters(optional)*/	
+														}
+													],
+											"result":[  /*The block that contains the resultant report. Cannot be empty */
+														/*If a property is missing, it will follow the same value from the original report*/
+														{
+															"zw_alarm_event": 7  /*Z-wave alarm event(optional)*/
+														}
+													]
+										}
+										]
+                               }
+                            ]
+                }
+
+            ]
+
+      },
+	  {
+      "_comment": "X company sensors",
+      "vid":271, /* vendor or manufacturer id */
+      "ptype": 1792, /* product type id */
+      "pid":4096, /* product id */
+      "category":1, /* device category as defined in DEV_XXX */
+      "ep": [ /*endpoints */
+				{
+				"epid":0, /* Endpoint id (starting from 0 for virtual endpoint, 1 and onwards for real endpoints) */
+				"create_interface":113, /* Create command class ID 113 (alarm command class) in this endpoint. This interface must not already exist in the actual device and endpoint */
+				"create_interface_version":4, /* Version for the created command class */
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 7, /*interface type as defined in IF_REC_TYPE_XXX */						   
+                               "basic":[ 
+										{
+											"match":[  /*The block that contains the original basic command data to compare against. Cannot be empty */	
+													    /*All the properties need to met for the conversion to happen. If a property is missing, it will not be included for comparison*/	
+														{
+															"command": 1,   /*Basic command class command. eg. BASIC_SET*/
+															"value":0,		/* Command value 0-255. -1 means don't care. */
+															"result_if_type": 6		/* Type of the resulted conversion as defined in IF_REC_TYPE_XXX*/
+														}
+													],
+											"result":[	/*The block that contains the resultant report. Cannot be empty. */
+														/*Content of this block will depends on the value of "result_if_type" in the match block. */
+														{
+														    "zw_alarm_type": 6,		/*Z-wave alarm type (optional)*/ 
+															"alarm_type_name": "Access Control", /*Alarm type name (optional)*/
+															"zw_alarm_event":11,   /*Z-wave alarm event(optional)*/ 	
+															"alarm_level_name":"Lock is Jammed" /*Alarm level name (optional)*/
+														}
+													]
+										},
+										{
+											"match":[
+														{
+															"command": 1,   /*Basic command class command. eg. BASIC_SET*/
+															"value":255,	/* Command value 0-255. -1 means don't care. */
+															"result_if_type": 6		/* Type of the resulted conversion as defined in IF_REC_TYPE_XXX*/
+														}
+													],
+											"result":[
+														{
+														    "zw_alarm_type": 6,		/*Z-wave alarm type (optional)*/ 
+															"alarm_type_name": "Access Control",   /*Alarm type name (optional)*/
+															"zw_alarm_event":5,    	/*Z-wave alarm event(optional)*/
+															"alarm_level_name":"Keypad Lock" /*Alarm level name (optional)*/
+														}
+													]
+										}
+										]
+                               }
+                            ]
+                }	
+			]
+	},
+	{
+      "_comment": "X company alarm sensors",
+      "vid":271, /* vendor or manufacturer id */
+      "ptype": 1792, /* product type id */
+      "pid":4096, /* product id */
+      "category":1, /* device category as defined in DEV_XXX */
+      "ep": [ /*endpoints */
+				{
+				"epid":0, /* Endpoint id (starting from 0 for virtual endpoint, 1 and onwards for real endpoints) */
+				"create_interface":113, /* Create command class ID 113 (alarm command class) in this endpoint. This interface must not already exist in the actual device and endpoint */
+				"create_interface_version":4, /* Version for the created command class */
+                "interface":[ /*interfaces*/
+                               {
+                               "if_type": 8, /*interface type as defined in IF_REC_TYPE_XXX */						   
+                               "alrm_snsr":[ 
+											{
+											"match":[  /*The block that contains the original alarm sensor command data to compare against. Cannot be empty */	
+													    /*All the properties need to met for the conversion to happen. If a property is missing, it will not be included for comparison*/	
+														{
+															"type": 5,   	/*Alarm sensor type. eg. Water leak*/
+															"state":0,		/* One Alarm sensor state value 0-255. -1 means don't care. */
+															"result_if_type": 6		/* Type of the resulted conversion as defined in IF_REC_TYPE_XXX*/
+														}
+													],
+											"result":[	/*The block that contains the resultant report. Cannot be empty. 
+														/*Content of this block will depends on the value of "result_if_type" in the match block. */
+														{
+														    "zw_alarm_type": 5,		/*Z-wave alarm type (optional)*/ 
+															"alarm_type_name": "Water Alarm", /*Alarm type name (optional)*/
+															"zw_alarm_event":0,		/*Z-wave alarm event(optional)*/
+															"alarm_level_name":"Event inactive", /*Alarm level name (optional)*/
+															"zw_alarm_param_type":4, /*Z-wave alarm param type (optional)*/
+															"zw_alarm_param":[2]	/*Z-wave alarm parameters (optional)*/
+														}
+													]
+											},
+											{
+											"match":[
+														{
+															"type": 5,   	/*Alarm sensor type. eg. Water leak*/
+															"state_range":[1,255],	/* All Alarm sensor state values within the range. */
+															"result_if_type": 6		/* Type of the resulted conversion as defined in IF_REC_TYPE_XXX*/
+														}
+													],
+											"result":[
+														{
+														    "zw_alarm_type": 6,		/*Z-wave alarm type (optional)*/ 
+															"alarm_type_name": "Access Control",   /*Alarm type name (optional)*/
+															"zw_alarm_event":5,    	/*Z-wave alarm event(optional)*/
+															"alarm_level_name":"Keypad Lock" /*Alarm level name (optional)*/
+														}
+													]
+											}
+										]
+                               }
+                            ]
+                }	
+			]
+	}
+  ]
+
+}

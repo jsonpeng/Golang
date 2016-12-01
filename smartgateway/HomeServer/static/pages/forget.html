@@ -1,0 +1,52 @@
+  <!-- BEGIN LOGIN FORM -->
+    <form class="form-vertical login-form" action="" method="post" name="registerForm" ng-controller="forgetpassword" novalidate>
+    <h3 class="">[["FORGETPWD"|translate]]</h3>
+      <p>[["UNAMETOPWD"|translate]].</p>
+      <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-envelope"></i>
+  <input class="m-wrap placeholder-no-fix" type="text" name="username" placeholder='[["ENTERUNAEM"|translate]]' ng-model="formData.username" ng-minlength="4" ng-maxlength="20" required/>         
+          </div>
+        </div>
+      </div>
+       <p>
+      <span style="color: red" ng-show="registerForm.username.$invalid">
+        <span ng-show="registerForm.username.$error.minlength ||registerForm.username.$error.maxlength">*[["UNAMENOT"|translate]]</span>
+      </span>
+      </p>
+	  
+	    <div class="control-group">
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-envelope"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" name="gwid" placeholder='[["ENTERGWID"|translate]]' ng-model="formData.gwid" ng-minlength="2" ng-maxlength="12" required/>
+             
+          </div>
+        </div>
+      </div>
+       <p>
+                    <span style="color: red" ng-show="registerForm.gwid.$invalid">
+                        <span ng-show="registerForm.gwid.$error.minlength ||registerForm.gwid.$error.maxlength">*[["MISGWID"|translate]]</span>
+                        </span>
+                        </p>
+ <div ng-show="!registerForm.username.$invalid && !registerForm.gwid.$invalid">
+           <div class="alert  hide" style="display: block;">
+<button class="close" data-dismiss="alert"></button>
+<span class="icon-ok">[["CHECKC"|translate]]</span>
+</div>
+      </div>
+      <div class="form-actions">
+      <i class="m-icon-swapleft"></i> 
+        <a href="/#/" >[["BACK"|translate]]</a>
+        <input type="button"  class="btn green pull-right" ng-disabled="registerForm.username.$invalid || registerForm.gwid.$invalid" value='[["FIND"|translate]]' ng-click="asave()"/>
+     
+                
+      </div>
+    </form>
+           
+      
+    <!-- END LOGIN FORM -->    
+<div >
+ [[formData]]
+</div>
